@@ -15,13 +15,6 @@
 #define LIVINGROOM_Light_4_On 267715
 #define LIVINGROOM_Light_4_Off 267724
 
-#define BEDROOM_Light_1_On 5332227
-#define BEDROOM_Light_1_Off 5332236
-#define BEDROOM_Light_2_On 5338371
-#define BEDROOM_Light_2_Off 5338380
-#define BEDROOM_Light_3_On 267571
-#define BEDROOM_Light_3_Off 267580
-
 RCSwitch switchTx = RCSwitch();
 RCSwitch switchRx = RCSwitch();
 
@@ -96,36 +89,6 @@ void smartHomeHandler(const char *event, const char *data)
                 switchTx.send(LIVINGROOM_Light_3_Off, 24);
             }else if (light_num_val == 4){
                 switchTx.send(LIVINGROOM_Light_4_Off, 24);
-            }
-        }
-    }else if (strcmp(room_location, "bedroom") == 0){
-        if (strcmp(switch_pos, "on") == 0){
-            if (light_number == NULL) {
-                switchTx.send(BEDROOM_Light_1_On, 24);
-                delay(1000);
-                switchTx.send(BEDROOM_Light_2_On, 24);
-                delay(1000);
-                switchTx.send(BEDROOM_Light_3_On, 24);
-            }else if (light_num_val == 1){
-                switchTx.send(BEDROOM_Light_1_On, 24);
-            }else if (light_num_val == 2){
-                switchTx.send(BEDROOM_Light_2_On, 24);
-            }else if (light_num_val == 3){
-                switchTx.send(BEDROOM_Light_3_On, 24);
-            }
-        }else if (strcmp(switch_pos, "off") == 0){
-            if (light_number == NULL) {
-                switchTx.send(BEDROOM_Light_1_Off, 24);
-                delay(1000);
-                switchTx.send(BEDROOM_Light_2_Off, 24);
-                delay(1000);
-                switchTx.send(BEDROOM_Light_3_Off, 24);
-            }else if (light_num_val == 1){
-                switchTx.send(BEDROOM_Light_1_Off, 24);
-            }else if (light_num_val == 2){
-                switchTx.send(BEDROOM_Light_2_Off, 24);
-            }else if (light_num_val == 3){
-                switchTx.send(BEDROOM_Light_3_Off, 24);
             }
         }
     }

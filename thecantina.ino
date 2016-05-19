@@ -2,7 +2,7 @@
 #include "RCSwitch/RCSwitch.h"
 #include <string.h>
 
-#define OFFICE_Light_1_Toggle 87489
+#define OFFICE_Light_1_Toggle 87489 //these are light bulb holders that use a toggle code instead of individual on/off codes
 #define OFFICE_Light_2_Toggle 87345
 #define OFFICE_Light_3_Toggle 87309
 

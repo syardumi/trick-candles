@@ -2,7 +2,8 @@
 #include "RCSwitch/RCSwitch.h"
 #include <string.h>
 
-#define OFFICE_Light_1_Toggle 87489 //these are light bulb holders that use a toggle code instead of individual on/off codes
+//CUSTOMIZE HERE: change the RF codes and their naming conventions here
+#define OFFICE_Light_1_Toggle 87489 //these are light bulb holders that use a toggle code instead of individual outlet on/off codes 
 #define OFFICE_Light_2_Toggle 87345
 #define OFFICE_Light_3_Toggle 87309
 
@@ -29,16 +30,20 @@ void smartHomeHandler(const char *event, const char *data)
     char *light_number = strtok(NULL, comma);
     int light_num_val;
     if (light_number != NULL)
-        light_num_val = atoi(light_number);
+        light_num_val = atoi(light_number); //used to turn a specific outlet on or off
     
     Particle.publish("room-location", room_location);
     Particle.publish("switch-position", switch_pos);
     
+    //----------
     //send TX based on 2 (maybe 3) params
     //this logic portion should be off-loaded to the cloud
     //and light codes stored to a JSON db for reference so 
     //that this code doesn't need to keep scaling proportionally
     //with more outlets/lights.
+    
+    //CUSTOMIZE HERE: use your naming conventions and RF code definitions in this if/then/else to perform the logic you'd like to see.
+    //(i.e. send multiple codes in order to turn a group of outlets on/off)
     if (strcmp(room_location, "office") == 0){
         if (light_number == NULL){
             switchTx.send(OFFICE_Light_1_Toggle, 24);
